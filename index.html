@@ -18,7 +18,201 @@
   </head>
 
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    
+<h1>Mr Elgersma's Brand New Website.</h1>
+<p>I just made this in a few minutes. More information coming. Last update: Sept 15, 2025</p>
+
+<h2>Resources</h2><p><a href="downloads/npp.zip">Notepad++ version 8</a></p>
+<p><a href="https://www.w3schools.com/html/default.asp">W3Schools.com</a></p>
+<p><a href="https://www.pygame.org/docs/">Pygame documentation</a></p>
+
+
+<p>Please test your Visual Studio Code Program works by following these instructions:</p>
+<ul>
+<li>Open the Visual Studio Code</li>
+<li>Click File - Open Folder</li>
+<li>Using this dialog, create a programming folder in your ICS folder and then create</li>
+<li>a folder called 'FirstProgram' and then click 'select folder'</li>
+<li>When asked to trust, <b>click the option that says trust anything</b> in the parent Folder</li>
+<li>Click New File</li>
+<li>Click Python File</li>
+<li>Copy and paste the code below into your new file</li>
+<li>Try to run the file by pressing the play button near the top right ></li>
+<li>Give the file a name like 'Sample' or 'test' (it should add the .py file extension itself)</li>
+<li>When it says it can't find pygame in the console type this below and hit enter:</li>
+<li>pip install pygame (in the terminal tab at the bottom)</li>
+<li>Click at the bottom right the python version (to the right of where you see a little face)</li>
+<li>Choose Python 3.11 (recommended)</li>
+<li>Try running it now and it should work.</li>
+</ul>
+
+<p>Here is a set of code to run pygame which basically just opens a purple window.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>
+# Example file showing a basic pygame "game loop"
+import pygame
+
+# pygame setup
+pygame.display.init()
+screen = pygame.display.set_mode((1280, 720))
+clock = pygame.time.Clock()
+running = True
+
+while running:
+    # poll for events
+    # pygame.QUIT event means the user clicked X to close your window
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # fill the screen with a color to wipe away anything from last frame
+    screen.fill("purple")
+
+    # RENDER YOUR GAME HERE
+
+    # flip() the display to put your work on screen
+    pygame.display.flip()
+
+    clock.tick(60)  # limits FPS to 60
+
+pygame.quit()
+</pre></div></div>
+<p>Using keyboard input</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>
+for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        #Each time a key is pressed a new 'b' is added
+        if event.type == pygame.KEYDOWN:
+            keysDown = pygame.key.get_pressed()            
+            if keysDown[pygame.K_SPACE]:
+                if pCount <=0:
+                    b.append([pX,pY-5])
+                    pCount = 10
+        if event.type == pygame.KEYUP:
+            keysDown = pygame.key.get_pressed()
+            #print(event.key)
+        #keysDown = pygame.key.get_pressed()  # Get the state of all keys
+            
+                
+
+    #holding a or d move pX left or right.
+    if keysDown[pygame.K_a]:
+        pX -= pSpeed
+    if keysDown[pygame.K_d]:
+        pX += pSpeed
+</pre></div></div>
+<p>Textbox Example Program.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>
+# Example file showing a basic pygame "game loop"
+import pygame
+
+# pygame setup
+pygame.init()
+screen = pygame.display.set_mode((1280, 720))
+clock = pygame.time.Clock()
+running = True
+
+# basic font for user typed
+base_font = pygame.font.Font(None, 32)
+user1_text = ''
+user2_text = ''
+# create rectangle
+input1_rect = pygame.Rect(200, 200, 140, 32)
+input2_rect = pygame.Rect(400, 200, 140, 32)
+
+active1 = False
+active2 = False
+while running:
+
+    # poll for events
+    # pygame.QUIT event means the user clicked X to close your window
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            # Check for backspace
+            if event.key == pygame.K_BACKSPACE:
+                # get text input from 0 to -1 i.e. end.
+                if(active1):
+                    user_text1 = user1_text[:-1]
+                if(active2):
+                    user_text2 = user2_text[:-1]
+            # Unicode standard is used for string
+            # formation
+            else:
+                if(active1):
+                    user1_text += event.unicode
+                if(active2):
+                    user2_text += event.unicode
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if input1_rect.collidepoint(event.pos):
+                active1 = True
+            else:
+                active1 = False
+            if input2_rect.collidepoint(event.pos):
+                active2 = True
+            else:
+                active2 = False
+            #print(pygame.mouse.get_pos())
+            print("x=" + str(pygame.mouse.get_pos()[0]))
+            print("y=" + str(pygame.mouse.get_pos()[1]))
+    # fill the screen with a color to wipe away anything from last frame
+    screen.fill("purple")
+    # RENDER YOUR GAME HERE
+    if active1:
+        pygame.draw.rect(screen, (150,150,250), input1_rect)
+    else:
+        pygame.draw.rect(screen, (150, 150, 150), input1_rect)
+    pygame.draw.rect(screen, (150, 150, 150), input2_rect)
+    text1_surface = base_font.render(user1_text, True, (255, 255, 255))
+    text2_surface = base_font.render(user2_text, True, (255, 255, 255))
+
+    # render at position stated in arguments
+    screen.blit(text1_surface, (input1_rect.x + 5, input1_rect.y + 5))
+    screen.blit(text2_surface, (input2_rect.x + 5, input2_rect.y + 5))
+
+    # set width of textfield so that text cannot get
+    # outside of user's text input
+    input1_rect.w = max(100, text1_surface.get_width() + 10)
+    input2_rect.w = max(100, text2_surface.get_width() + 10)
+
+    pygame.display.flip()
+
+    clock.tick(60)  # limits FPS to 60
+
+pygame.quit()
+</pre></div></div>
+
+<p>Key resource for learning Python:<br><a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">Python Tutorial (w3schools.com)</a>&nbsp;</p>
+<p></p>
+<p>Need print command, quotes, brackets<br>1. <a href="https://www.hackerrank.com/challenges/py-hello-world/problem?isFullScreen=true" target="_blank" rel="noopener">Say "Hello, World!" With Python | HackerRank</a></p>
+<p></p>
+<p>Need casting, types, *,+,- and input command<br>2. <a href="https://www.hackerrank.com/challenges/python-arithmetic-operators/problem?isFullScreen=true" target="_blank" rel="noopener">Arithmetic Operators | HackerRank</a></p>
+<p></p>
+<p>Integer vs float division<br>3. <a href="https://www.hackerrank.com/challenges/python-division/problem?isFullScreen=true" target="_blank" rel="noopener">Python: Division | HackerRank</a></p>
+<p></p>
+<p>Conditional Statement (Tricky, learn mod (%) first)<br><a href="https://www.hackerrank.com/challenges/py-if-else/problem?isFullScreen=true" rel="noopener"></a>4.&nbsp;<a href="https://www.hackerrank.com/challenges/py-if-else/problem?isFullScreen=true" target="_blank" rel="noopener">Python If-Else | HackerRank</a>&nbsp;</p>
+<p></p>
+<p>Adding with a string, working within functions<br>5.&nbsp;<a href="https://www.hackerrank.com/challenges/whats-your-name/problem?isFullScreen=true" target="_blank" rel="noopener">What's Your Name? | HackerRank</a></p>
+<p></p>
+<p>Basic loops - for/while<br>6. <a href="https://www.hackerrank.com/challenges/python-print/problem?isFullScreen=true" target="_blank" rel="noopener">Print Function | HackerRank</a></p>
+<p></p>
+<p>Create your own function (Tricky):<br>7. <a href="https://www.hackerrank.com/challenges/write-a-function/problem?isFullScreen=true" target="_blank" rel="noopener">Write a function | HackerRank</a></p>
+<p></p>
+<p>Working with lists (takes time)<br>8. <a href="https://www.hackerrank.com/challenges/python-lists/problem?isFullScreen=true" target="_blank" rel="noopener">Lists | HackerRank</a></p>
+<p></p>
+<p>Use a list: (A little tricky)<br>9. <a href="https://www.hackerrank.com/challenges/find-second-maximum-number-in-a-list/problem?isFullScreen=true" target="_blank" rel="noopener">Find the Runner-Up Score! | HackerRank</a></p>
+<p></p>
+<p>String manipulation (use upper() and lower() commands)<br>10.&nbsp;<a href="https://www.hackerrank.com/challenges/swap-case/problem?isFullScreen=true" target="_blank" rel="noopener">sWAP cASE | HackerRank</a></p>
+<p></p>
+<p>String (split)<br>11.&nbsp;<a href="https://www.hackerrank.com/challenges/python-string-split-and-join/problem?isFullScreen=true" target="_blank" rel="noopener">String Split and Join | HackerRank</a></p>
+<p></p>
+<p>String Slicing (see example in problem definition)<br>12.&nbsp;<a href="https://www.hackerrank.com/challenges/python-mutations/problem?isFullScreen=true" target="_blank" rel="noopener">Mutations | HackerRank</a></p>
+<p></p>
+<p>Substring - use 'in'<br>13.&nbsp;<a href="https://www.hackerrank.com/challenges/find-a-string/problem?isFullScreen=true" target="_blank" rel="noopener">Find a string | HackerRank</a></p>
+<p></p>
+<p>String practice<br>14.&nbsp;<a href="https://www.hackerrank.com/challenges/the-minion-game/problem?isFullScreen=true" target="_blank" rel="noopener">Minion Game | HackerRank</a></p>
+<p></p>
+<p>Math practice - please sign up as needed for the competition<br>15. <a href="https://www.hackerrank.com/contests/dsbn-codes-week-1-fall-2023/challenges/dsbn-codes-week-1-fall-2023" target="_blank" rel="noopener">DSBN Codes Shape Math</a></p>
+</body>
 </html>
