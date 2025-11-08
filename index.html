@@ -1,34 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mr. Elgersma's Coding Classroom</title>
-    <meta name="description" content="High School Computer Science Resources - Python Programming, Pygame Development, and Coding Tutorials" />
-    <meta name="author" content="Mr. Elgersma" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mr Elgersma - Computer Science</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="dark-mode">
 
-    <meta property="og:title" content="Mr. Elgersma's Coding Classroom" />
-    <meta property="og:description" content="High School Computer Science Resources - Python Programming, Pygame Development, and Coding Tutorials" />
-    <meta property="og:type" content="website" />
+<div class="container py-4">
+  <header class="text-center mb-4">
+    <img src="images/computer.png" alt="computer" class="hero-img mb-3">
+    <h1 class="display-5">Mr Elgersma's Computer Science Hub</h1>
+    <p class="lead">Welcome! This site helps you learn programming and get your computer science tools ready.</p>
+    <p class="fw-bold">Last updated: Sept 15, 2025</p>
+    <div><button id="themeToggle" class="btn btn-sm btn-outline-light">Toggle Theme</button></div>
+  </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-  </head>
+  <!-- Main tabs -->
+  <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+    <li class="nav-item" role="presentation"><button class="nav-link active" id="resources-tab" data-mdb-toggle="tab" data-mdb-target="#resources" type="button" role="tab">Resources</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" id="setup-tab" data-mdb-toggle="tab" data-mdb-target="#setup" type="button" role="tab">Getting Started</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" id="pygame-tab" data-mdb-toggle="tab" data-mdb-target="#pygame" type="button" role="tab">Pygame & Code</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" id="hackerrank-tab" data-mdb-toggle="tab" data-mdb-target="#hackerrank" type="button" role="tab">Practice (HackerRank)</button></li>
+  </ul>
 
-  <body>
-    
-<h1>Mr Elgersma's Brand New Website.</h1>
-<p>I just made this in a few minutes. More information coming. Last update: Sept 15, 2025</p>
+  <div class="tab-content p-3" id="mainTabsContent">
+    <div class="tab-pane fade show active" id="resources" role="tabpanel">
+      <h3>Resources</h3>
+      <p><a href="downloads/npp.zip">Notepad++ version 8</a></p>
+      <p><a href="https://www.w3schools.com/html/default.asp">W3Schools.com</a></p>
+      <p><a href="https://www.pygame.org/docs/">Pygame documentation</a></p>
+      <p><a href="https://www.w3schools.com/python/" target="_blank">Python Tutorial (w3schools.com)</a>&nbsp;</p>
+    </div>
 
-<h2>Resources</h2><p><a href="downloads/npp.zip">Notepad++ version 8</a></p>
-<p><a href="https://www.w3schools.com/html/default.asp">W3Schools.com</a></p>
-<p><a href="https://www.pygame.org/docs/">Pygame documentation</a></p>
-
-
-<p>Please test your Visual Studio Code Program works by following these instructions:</p>
-<ul>
+    <div class="tab-pane fade" id="setup" role="tabpanel">
+      <h3>Set Up Visual Studio Code & Python</h3>
+      <ol>
 <li>Open the Visual Studio Code</li>
 <li>Click File - Open Folder</li>
 <li>Using this dialog, create a programming folder in your ICS folder and then create</li>
@@ -37,18 +46,28 @@
 <li>Click New File</li>
 <li>Click Python File</li>
 <li>Copy and paste the code below into your new file</li>
-<li>Try to run the file by pressing the play button near the top right ></li>
+<li>Try to run the file by pressing the play button near the top right &gt;</li>
 <li>Give the file a name like 'Sample' or 'test' (it should add the .py file extension itself)</li>
 <li>When it says it can't find pygame in the console type this below and hit enter:</li>
 <li>pip install pygame (in the terminal tab at the bottom)</li>
 <li>Click at the bottom right the python version (to the right of where you see a little face)</li>
 <li>Choose Python 3.11 (recommended)</li>
 <li>Try running it now and it should work.</li>
-</ul>
+</ol>
+    </div>
 
-<p>Here is a set of code to run pygame which basically just opens a purple window.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>
-# Example file showing a basic pygame "game loop"
+    <div class="tab-pane fade" id="pygame" role="tabpanel">
+      <h3>Pygame Starter Code</h3>
+
+      <!-- code sub-tabs -->
+      <ul class="nav nav-tabs mb-3" id="codeTabs" role="tablist">
+        <li class="nav-item" role="presentation"><button class="nav-link active" id="basic-tab" data-mdb-toggle="tab" data-mdb-target="#basic" type="button" role="tab">Basic Window</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="keyboard-tab" data-mdb-toggle="tab" data-mdb-target="#keyboard" type="button" role="tab">Keyboard Input</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="textbox-tab" data-mdb-toggle="tab" data-mdb-target="#textbox" type="button" role="tab">Textbox Example</button></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="basic" role="tabpanel"><pre class='code-block'># Example file showing a basic pygame "game loop"
 import pygame
 
 # pygame setup
@@ -74,11 +93,8 @@ while running:
 
     clock.tick(60)  # limits FPS to 60
 
-pygame.quit()
-</pre></div></div>
-<p>Using keyboard input</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>
-for event in pygame.event.get():
+pygame.quit()</pre></div>
+        <div class="tab-pane fade" id="keyboard" role="tabpanel"><pre class='code-block'>for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         #Each time a key is pressed a new 'b' is added
@@ -92,18 +108,15 @@ for event in pygame.event.get():
             keysDown = pygame.key.get_pressed()
             #print(event.key)
         #keysDown = pygame.key.get_pressed()  # Get the state of all keys
-            
-                
+
+
 
     #holding a or d move pX left or right.
     if keysDown[pygame.K_a]:
         pX -= pSpeed
     if keysDown[pygame.K_d]:
-        pX += pSpeed
-</pre></div></div>
-<p>Textbox Example Program.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>
-# Example file showing a basic pygame "game loop"
+        pX += pSpeed</pre></div>
+        <div class="tab-pane fade" id="textbox" role="tabpanel"><pre class='code-block'># Example file showing a basic pygame "game loop"
 import pygame
 
 # pygame setup
@@ -180,39 +193,70 @@ while running:
 
     clock.tick(60)  # limits FPS to 60
 
-pygame.quit()
-</pre></div></div>
+pygame.quit()</pre></div>
+      </div>
+    </div>
 
-<p>Key resource for learning Python:<br><a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">Python Tutorial (w3schools.com)</a>&nbsp;</p>
-<p></p>
+    <div class="tab-pane fade" id="hackerrank" role="tabpanel">
+      
+<h3>Key resource for learning Python:</h3>
+<p><a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">Python Tutorial (w3schools.com)</a>&nbsp;</p>
 <p>Need print command, quotes, brackets<br>1. <a href="https://www.hackerrank.com/challenges/py-hello-world/problem?isFullScreen=true" target="_blank" rel="noopener">Say "Hello, World!" With Python | HackerRank</a></p>
-<p></p>
 <p>Need casting, types, *,+,- and input command<br>2. <a href="https://www.hackerrank.com/challenges/python-arithmetic-operators/problem?isFullScreen=true" target="_blank" rel="noopener">Arithmetic Operators | HackerRank</a></p>
-<p></p>
 <p>Integer vs float division<br>3. <a href="https://www.hackerrank.com/challenges/python-division/problem?isFullScreen=true" target="_blank" rel="noopener">Python: Division | HackerRank</a></p>
-<p></p>
-<p>Conditional Statement (Tricky, learn mod (%) first)<br><a href="https://www.hackerrank.com/challenges/py-if-else/problem?isFullScreen=true" rel="noopener"></a>4.&nbsp;<a href="https://www.hackerrank.com/challenges/py-if-else/problem?isFullScreen=true" target="_blank" rel="noopener">Python If-Else | HackerRank</a>&nbsp;</p>
-<p></p>
-<p>Adding with a string, working within functions<br>5.&nbsp;<a href="https://www.hackerrank.com/challenges/whats-your-name/problem?isFullScreen=true" target="_blank" rel="noopener">What's Your Name? | HackerRank</a></p>
-<p></p>
+<p>Conditional Statement (Tricky, learn mod (%) first)<br>4. <a href="https://www.hackerrank.com/challenges/py-if-else/problem?isFullScreen=true" target="_blank" rel="noopener">Python If-Else | HackerRank</a>&nbsp;</p>
+<p>Adding with a string, working within functions<br>5. <a href="https://www.hackerrank.com/challenges/whats-your-name/problem?isFullScreen=true" target="_blank" rel="noopener">What's Your Name? | HackerRank</a></p>
 <p>Basic loops - for/while<br>6. <a href="https://www.hackerrank.com/challenges/python-print/problem?isFullScreen=true" target="_blank" rel="noopener">Print Function | HackerRank</a></p>
-<p></p>
 <p>Create your own function (Tricky):<br>7. <a href="https://www.hackerrank.com/challenges/write-a-function/problem?isFullScreen=true" target="_blank" rel="noopener">Write a function | HackerRank</a></p>
-<p></p>
 <p>Working with lists (takes time)<br>8. <a href="https://www.hackerrank.com/challenges/python-lists/problem?isFullScreen=true" target="_blank" rel="noopener">Lists | HackerRank</a></p>
-<p></p>
 <p>Use a list: (A little tricky)<br>9. <a href="https://www.hackerrank.com/challenges/find-second-maximum-number-in-a-list/problem?isFullScreen=true" target="_blank" rel="noopener">Find the Runner-Up Score! | HackerRank</a></p>
-<p></p>
-<p>String manipulation (use upper() and lower() commands)<br>10.&nbsp;<a href="https://www.hackerrank.com/challenges/swap-case/problem?isFullScreen=true" target="_blank" rel="noopener">sWAP cASE | HackerRank</a></p>
-<p></p>
-<p>String (split)<br>11.&nbsp;<a href="https://www.hackerrank.com/challenges/python-string-split-and-join/problem?isFullScreen=true" target="_blank" rel="noopener">String Split and Join | HackerRank</a></p>
-<p></p>
-<p>String Slicing (see example in problem definition)<br>12.&nbsp;<a href="https://www.hackerrank.com/challenges/python-mutations/problem?isFullScreen=true" target="_blank" rel="noopener">Mutations | HackerRank</a></p>
-<p></p>
-<p>Substring - use 'in'<br>13.&nbsp;<a href="https://www.hackerrank.com/challenges/find-a-string/problem?isFullScreen=true" target="_blank" rel="noopener">Find a string | HackerRank</a></p>
-<p></p>
-<p>String practice<br>14.&nbsp;<a href="https://www.hackerrank.com/challenges/the-minion-game/problem?isFullScreen=true" target="_blank" rel="noopener">Minion Game | HackerRank</a></p>
-<p></p>
+<p>String manipulation (use upper() and lower() commands)<br>10. <a href="https://www.hackerrank.com/challenges/swap-case/problem?isFullScreen=true" target="_blank" rel="noopener">sWAP cASE | HackerRank</a></p>
+<p>String (split)<br>11. <a href="https://www.hackerrank.com/challenges/python-string-split-and-join/problem?isFullScreen=true" target="_blank" rel="noopener">String Split and Join | HackerRank</a></p>
+<p>String Slicing (see example in problem definition)<br>12. <a href="https://www.hackerrank.com/challenges/python-mutations/problem?isFullScreen=true" target="_blank" rel="noopener">Mutations | HackerRank</a></p>
+<p>Substring - use 'in'<br>13. <a href="https://www.hackerrank.com/challenges/find-a-string/problem?isFullScreen=true" target="_blank" rel="noopener">Find a string | HackerRank</a></p>
+<p>String practice<br>14. <a href="https://www.hackerrank.com/challenges/the-minion-game/problem?isFullScreen=true" target="_blank" rel="noopener">Minion Game | HackerRank</a></p>
 <p>Math practice - please sign up as needed for the competition<br>15. <a href="https://www.hackerrank.com/contests/dsbn-codes-week-1-fall-2023/challenges/dsbn-codes-week-1-fall-2023" target="_blank" rel="noopener">DSBN Codes Shape Math</a></p>
+
+    </div>
+
+  </div>
+
+  <footer class="text-center text-muted mt-4">Contact / Course materials</footer>
+</div>
+
+<style>
+/* Preserve Version 2 look but ensure tab highlighting is readable */
+body.dark-mode { background: linear-gradient(180deg,#071124 0%, #0f1720 100%); color:#e6eef3; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+.container { max-width:980px; }
+.hero-img { max-height:120px; width:auto; border-radius:12px; object-fit:cover; box-shadow: 0 6px 24px rgba(0,0,0,.6); display:block;margin:0 auto; }
+.nav-tabs .nav-link { color:#cfe8f0 !important; font-weight:600; }
+.nav-tabs .nav-link.active { color:#012d2f !important; background:#6ee7b7 !important; border-bottom:3px solid #58c9ab !important; }
+.tab-content { background: rgba(255,255,255,0.02); padding:18px; border-radius:10px; margin-top:12px; }
+.code-block { background:#0b1228; color:#dffcf6; padding:16px; border-radius:10px; overflow:auto; font-family: 'Courier New', monospace; font-size:14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.02); white-space:pre-wrap; }
+a { color:#7ee7c7; }
+.btn-outline-light { border-color: rgba(255,255,255,0.2); color: #e6eef3; }
+</style>
+
+<script>
+// reliable theme toggle: reads localStorage, applies on load, and updates button text
+document.addEventListener('DOMContentLoaded', function(){
+  const body = document.body;
+  const btn = document.getElementById('themeToggle');
+  let theme = localStorage.getItem('theme');
+  if(!theme) { theme = 'dark'; localStorage.setItem('theme', 'dark'); }
+  function applyTheme(t){
+    if(t==='dark'){ body.classList.add('dark-mode'); btn.textContent = '🌙 Dark'; }
+    else{ body.classList.remove('dark-mode'); btn.textContent = '☀️ Light'; }
+  }
+  applyTheme(theme);
+  btn.addEventListener('click', function(){
+    theme = (theme==='dark') ? 'light' : 'dark';
+    localStorage.setItem('theme', theme);
+    applyTheme(theme);
+  });
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 </body>
 </html>
